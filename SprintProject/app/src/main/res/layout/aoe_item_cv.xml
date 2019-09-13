@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cvConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView android:id="@+id/cvTextView_itemName"
+
+            android:text="Aztecs"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textStyle="bold"
+            android:textSize="32sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+
+        <TextView android:id="@+id/cvTextView_itemType"
+
+            android:text="@string/civilizations"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            app:layout_constraintLeft_toLeftOf="@id/cvTextView_itemName"
+            app:layout_constraintTop_toBottomOf="@id/cvTextView_itemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView android:id="@+id/cvTextView_itemDescription"
+
+            android:textStyle="italic"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="A fearless group of warriors who got to great lengths to intimidate there foes"
+            app:layout_constraintTop_toBottomOf="@id/cvTextView_itemType"
+            app:layout_constraintLeft_toLeftOf="@id/cvTextView_itemType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/cvButton_details"
+
+            android:paddingStart="0dp"
+            android:textAlignment="viewStart"
+            android:text="@string/details"
+            app:layout_constraintLeft_toLeftOf="@id/cvTextView_itemDescription"
+            app:layout_constraintTop_toBottomOf="@id/cvTextView_itemDescription"
+            app:layout_constraintBottom_toBottomOf="parent"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
