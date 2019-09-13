@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    tools:context=".ui.fragments.FragmentDetail"
+    android:id="@+id/detail_fragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView android:id="@+id/detailFragmentTV_description"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:text="djfkjlkfjdafjlkjdafjdjfdkjafjd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button android:id="@+id/detailFragmentButton"
+        android:text="Toast"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

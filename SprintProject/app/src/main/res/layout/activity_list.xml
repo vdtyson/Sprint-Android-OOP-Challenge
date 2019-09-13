@@ -44,12 +44,11 @@
             android:layout_height="wrap_content"
             android:text="@string/units"/>
     </com.google.android.material.chip.ChipGroup>
-
-    <fragment
-        android:layout_marginTop="24dp"
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/listActvity_rv"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/listActivity_chipGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

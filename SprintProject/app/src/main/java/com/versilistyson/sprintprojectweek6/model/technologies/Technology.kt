@@ -3,16 +3,10 @@ package com.versilistyson.sprintprojectweek6.model.technologies
 import com.versilistyson.sprintprojectweek6.model.common.Item
 
 data class Technology(
-    val age: String,
-    val applies_to: List<String>,
-    val build_time: Int,
-    val cost: Cost,
-    val description: String,
-    val develops_in: String,
-    val expansion: String,
-    val id: Int,
-    val name: String
-) : Item() {
-
-    override val classType: ItemType = ItemType.Technology
+    override val name: String,
+    override val shortDescription: String,
+    override val longDescription: String
+) : Item {
+    override var isFavorite: Boolean = false
+    override val classType: Item.ItemType = Item.ItemType.Technology
 }

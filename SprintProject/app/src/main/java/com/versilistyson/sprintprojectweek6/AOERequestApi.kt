@@ -1,25 +1,20 @@
 package com.versilistyson.sprintprojectweek6
 
 import com.versilistyson.sprintprojectweek6.model.civilizations.Civilization
-import com.versilistyson.sprintprojectweek6.model.civilizations.Civilizations
 import com.versilistyson.sprintprojectweek6.model.structures.Structure
-import com.versilistyson.sprintprojectweek6.model.structures.Structures
-import com.versilistyson.sprintprojectweek6.model.technologies.Technologies
 import com.versilistyson.sprintprojectweek6.model.technologies.Technology
-import com.versilistyson.sprintprojectweek6.model.units.Units
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Path
 import java.util.concurrent.TimeUnit
 
 interface AOERequestApi {
 
         @GET("/civilizations")
-        fun getCivilizations(): Call<List<Civilization>>
+        fun getCivilizations(): Call<Civilization>
 
         @GET("/units")
         fun getUnits(): Call<List<Unit>>

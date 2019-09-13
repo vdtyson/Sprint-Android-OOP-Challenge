@@ -6,7 +6,7 @@ import com.versilistyson.sprintprojectweek6.model.technologies.Technology
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-open class Item () {
+interface Item {
 
     enum class ItemType(type: String) {
         Civilization("Civilization"),
@@ -15,21 +15,16 @@ open class Item () {
         Unit("Unit"),
         All("All")
     }
+    val name: String
+    val classType: ItemType
+    var isFavorite: Boolean
+    val shortDescription: String
+    val longDescription: String
 
-    open val classType: ItemType = ItemType.All
-    var isFavorite: Boolean = false
-
-    val retriever = AOERequestApi.create()
-    fun getItemDescription(): String {
-        var itemDescription: String = ""
-
-        when(classType) {
-            ItemType.Civilization -> itemDescription = "This is a civilization"
-            ItemType.Structure -> itemDescription = "This is a structure"
-            ItemType.Technology -> itemDescription = "This is a Technology"
-            ItemType.Unit -> itemDescription = "This is a Unit"
-            else -> itemDescription = ""
-        }
-        return itemDescription
+    fun getItemShortDescription(): String {
+       return shortDescription
+    }
+    fun getItemLongDescription(): String {
+        return longDescription
     }
 }
