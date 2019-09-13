@@ -1,6 +1,8 @@
 package com.versilistyson.sprintprojectweek6.model.units
 
-data class Unit(
+import com.versilistyson.sprintprojectweek6.model.common.Item
+
+class Unit(
     val accuracy: String,
     val age: String,
     val armor: String,
@@ -22,4 +24,7 @@ data class Unit(
     val range: Int,
     val reload_time: Double,
     val search_radius: Int
-)
+) : Item() {
+    override val classType: ItemType = ItemType.Unit
+
+}

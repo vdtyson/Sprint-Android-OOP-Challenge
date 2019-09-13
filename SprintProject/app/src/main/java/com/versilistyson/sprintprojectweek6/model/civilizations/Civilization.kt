@@ -1,6 +1,8 @@
 package com.versilistyson.sprintprojectweek6.model.civilizations
 
-data class Civilization(
+import com.versilistyson.sprintprojectweek6.model.common.Item
+
+data class Civilization (
     val armyType: String,
     val civilization_bonus: List<String>,
     val expansion: String,
@@ -9,4 +11,9 @@ data class Civilization(
     val team_bonus: String,
     val uniqueTech: List<String>,
     val uniqueUnit: List<String>
-)
+
+) : Item() {
+
+    override val classType: ItemType = ItemType.Civilization
+
+}

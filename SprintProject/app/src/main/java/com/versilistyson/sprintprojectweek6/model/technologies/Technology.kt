@@ -1,5 +1,7 @@
 package com.versilistyson.sprintprojectweek6.model.technologies
 
+import com.versilistyson.sprintprojectweek6.model.common.Item
+
 data class Technology(
     val age: String,
     val applies_to: List<String>,
@@ -10,4 +12,7 @@ data class Technology(
     val expansion: String,
     val id: Int,
     val name: String
-)
+) : Item() {
+
+    override val classType: ItemType = ItemType.Technology
+}

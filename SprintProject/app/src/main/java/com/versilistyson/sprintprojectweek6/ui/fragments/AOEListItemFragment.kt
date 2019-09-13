@@ -21,6 +21,7 @@ import com.versilistyson.sprintprojectweek6.ui.fragments.dummy.DummyContent.Dumm
  */
 class AOEListItemFragment : Fragment() {
 
+
     // TODO: Customize parameters
     private var columnCount = 1
 
@@ -38,6 +39,8 @@ class AOEListItemFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         val view = inflater.inflate(R.layout.fragment_item_list, container, false)
 
         // Set the adapter

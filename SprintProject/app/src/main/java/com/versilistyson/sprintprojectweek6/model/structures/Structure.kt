@@ -1,5 +1,8 @@
 package com.versilistyson.sprintprojectweek6.model.structures
 
+import android.content.ClipData
+import com.versilistyson.sprintprojectweek6.model.common.Item
+
 data class Structure(
     val age: String,
     val armor: String,
@@ -14,4 +17,7 @@ data class Structure(
     val range: String,
     val reload_time: Double,
     val special: List<String>
-)
+) : Item() {
+
+    override val classType: ItemType = ItemType.Structure
+}
