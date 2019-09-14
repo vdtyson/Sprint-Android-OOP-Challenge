@@ -8,36 +8,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 import com.versilistyson.sprintprojectweek6.R
 import com.versilistyson.sprintprojectweek6.ui.activities.list.ItemRecyclerView
+import com.versilistyson.sprintprojectweek6.ui.activities.list.ListActivity
+import kotlinx.android.synthetic.main.fragment_fragment_detail.*
+import kotlinx.android.synthetic.main.fragment_fragment_detail.view.*
 
-// TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [FragmentDetail.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [FragmentDetail.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FragmentDetail : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
-
-            val longDescription = activity!!.intent.getStringExtra(ItemRecyclerView.LONGDESCRIPTION) as String
         }
     }
 
@@ -45,7 +38,17 @@ class FragmentDetail : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_fragment_detail, container, false)
+        val name = param2
+        val description = param1
+        val view = inflater.inflate(R.layout.fragment_fragment_detail, container, false)
+        val context = view.context
+        view.detailFragmentTV_description.text = description
+        view.detailFragmentButton.setOnClickListener {
+            Toast.makeText(activity, "$name added to favorites", Toast.LENGTH_SHORT).show()
+            val itent = Intent(context, )
+        }
+
+        return view
     }
 
     fun onButtonPressed(uri: Uri) {
@@ -66,32 +69,13 @@ class FragmentDetail : Fragment() {
         listener = null
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
+
     interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         fun onFragmentInteraction(uri: Uri)
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentDetail.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             FragmentDetail().apply {
