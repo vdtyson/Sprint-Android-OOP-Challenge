@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_fragment_detail.view.*
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+private const val NAME = "NAME"
 
 class FragmentDetail : Fragment() {
     private var param1: String? = null
@@ -44,8 +45,11 @@ class FragmentDetail : Fragment() {
         val context = view.context
         view.detailFragmentTV_description.text = description
         view.detailFragmentButton.setOnClickListener {
+
             Toast.makeText(activity, "$name added to favorites", Toast.LENGTH_SHORT).show()
-            val itent = Intent(context, )
+            val intent = Intent(activity, ListActivity::class.java)
+            intent.putExtra("Name", name)
+            startActivity(intent)
         }
 
         return view

@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_list.*
 
 class ListActivity : AppCompatActivity() {
 
+    var addToFavorites = intent?.getStringExtra("name")
     private lateinit var itemAdapter: ItemRecyclerView
     val list = mutableListOf<Item>()
 
@@ -30,16 +31,22 @@ class ListActivity : AppCompatActivity() {
         val structList = AOEItemMockData.StructureList
         val techList = AOEItemMockData.TechnologyList
 
+        for (i in 0 until list.size - 1) {
+            if (list[i].name == addToFavorites) {
+                list[i].isFavorite = true
+            }
+        }
+
         initRecyclerView()
 
 
     }
     fun initRecyclerView() {
         listActvity_rv.apply {
-            layoutManager = LinearLayoutManager(this@ListActivity)
+            layoutManager = LinearLayoutManager(this@ListActivity, LinearLayoutManager.VERTICAL, false)
             itemAdapter = ItemRecyclerView(list)
             adapter = itemAdapter
-
         }
     }
+
 }
