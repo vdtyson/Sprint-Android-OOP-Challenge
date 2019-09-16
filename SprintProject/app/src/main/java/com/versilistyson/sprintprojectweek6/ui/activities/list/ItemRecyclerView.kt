@@ -1,12 +1,14 @@
 package com.versilistyson.sprintprojectweek6.ui.activities.list
 
-import android.content.Intent
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
@@ -16,7 +18,7 @@ import com.versilistyson.sprintprojectweek6.model.common.Item
 import com.versilistyson.sprintprojectweek6.ui.fragments.FragmentDetail
 import kotlinx.android.synthetic.main.aoe_item_cv.view.*
 
-class ItemRecyclerView(var items: List<Item>): RecyclerView.Adapter<ItemRecyclerView.ViewHolder>() {
+class ItemRecyclerView(var items: List<Item>, val context: Context): RecyclerView.Adapter<ItemRecyclerView.ViewHolder>() {
     companion object {
         const val LONGDESCRIPTION = "LONGDESCRIPTION"
     }
@@ -29,7 +31,11 @@ class ItemRecyclerView(var items: List<Item>): RecyclerView.Adapter<ItemRecycler
         val itemTypeTV = view.cvTextView_itemType as TextView
         fun onClickListener(i: Int) {
             detailsButton.setOnClickListener {
-                FragmentDetail.newInstance(items[i].longDescription, items[i].name)
+                val fragmentInstance = FragmentDetail()
+                val bundle = Bundle()
+                bundle.putSerializable(LONGDESCRIPTION, items[i])
+                fragmentInstance.arguments = bundle
+                (context as FragmentActivity).supportFragmentManager.beginTransaction().replace(R.id.list_activity_cl, fragmentInstance).commit()
             }
         }
     }
@@ -45,9 +51,14 @@ class ItemRecyclerView(var items: List<Item>): RecyclerView.Adapter<ItemRecycler
 
     override fun onBindViewHolder(holder: ItemRecyclerView.ViewHolder, i: Int) {
         holder.descriptionTV.text = items[i].getItemShortDescription()
-        holder.itemTypeTV.text = items[i].classType.toString()
         holder.nameTV.text = items[i].name
         holder.onClickListener(i)
 
+    }
+    interface OnRecyclerViewClickedListener {
+        fun onRecyclerViewClicked(item: Item) {
+
+
+        }
     }
 }

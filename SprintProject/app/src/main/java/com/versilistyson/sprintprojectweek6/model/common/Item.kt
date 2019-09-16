@@ -1,19 +1,16 @@
 package com.versilistyson.sprintprojectweek6.model.common
 
-interface Item {
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 
-    enum class ItemType(type: String) {
-        Civilization("Civilization"),
-        Structure("Structure"),
-        Technology("Technology"),
-        Unit("Unit"),
-        All("All")
-    }
-    val name: String
-    val classType: ItemType
-    var isFavorite: Boolean
-    val shortDescription: String
-    val longDescription: String
+open class Item(  var name: String = "",
+             var isFavorite: Boolean = false,
+             var shortDescription: String = "",
+             var longDescription: String = ""
+) : Serializable {
+
+
 
     fun getItemShortDescription(): String {
        return shortDescription

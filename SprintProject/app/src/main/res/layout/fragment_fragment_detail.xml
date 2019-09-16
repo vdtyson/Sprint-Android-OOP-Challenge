@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-
+    android:background="@android:color/white"
+    android:clickable="true"
     tools:context=".ui.fragments.FragmentDetail"
     android:id="@+id/detail_fragment"
     xmlns:android="http://schemas.android.com/apk/res/android"

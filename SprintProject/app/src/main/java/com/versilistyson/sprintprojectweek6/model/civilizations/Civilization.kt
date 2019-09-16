@@ -1,14 +1,16 @@
 package com.versilistyson.sprintprojectweek6.model.civilizations
 
+import android.os.Parcelable
 import com.versilistyson.sprintprojectweek6.model.common.Item
+import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 
-data class Civilization (
-    override val name: String,
-    override val shortDescription: String,
-    override val longDescription: String
+class Civilization (
+    name: String,
+    shortDescription: String,
+    longDescription: String,
+    isFavorite: Boolean = false
+) : Item(name = name,shortDescription =shortDescription,longDescription = longDescription,isFavorite =  isFavorite), Serializable {
 
-) : Item {
-    override var isFavorite: Boolean = false
-    override val classType: Item.ItemType = Item.ItemType.Civilization
 
 }

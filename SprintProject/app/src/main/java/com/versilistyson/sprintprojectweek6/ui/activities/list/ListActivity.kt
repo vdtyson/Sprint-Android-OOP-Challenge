@@ -2,40 +2,33 @@ package com.versilistyson.sprintprojectweek6.ui.activities.list
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.versilistyson.sprintprojectweek6.R
-import com.versilistyson.sprintprojectweek6.model.civilizations.AOEItemMockData
+import com.versilistyson.sprintprojectweek6.viewmodel.AOEItemMockData
 import com.versilistyson.sprintprojectweek6.model.common.Item
-import com.versilistyson.sprintprojectweek6.model.units.ItemTypeUnit
+import com.versilistyson.sprintprojectweek6.ui.fragments.FragmentDetail
 import kotlinx.android.synthetic.main.activity_list.*
 
-class ListActivity : AppCompatActivity() {
+class ListActivity : AppCompatActivity(), FragmentDetail.OnFragmentInteractionListener {
 
-    var addToFavorites = intent?.getStringExtra("name")
+    override fun onFragmentInteraction(item: Item) {
+        Toast.makeText(this, "$item is favorited", Toast.LENGTH_SHORT).show()
+    }
+
+
+
     private lateinit var itemAdapter: ItemRecyclerView
+    var viewModel: AOEItemMockData? = null
     val list = mutableListOf<Item>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
+
         val longDescription = intent.getStringExtra(ItemRecyclerView.LONGDESCRIPTION)
-
-
-       val unitList = AOEItemMockData.UnitList
-        val civilList = AOEItemMockData.CivilizationList
-        val structList = AOEItemMockData.StructureList
-        val techList = AOEItemMockData.TechnologyList
-
-        for (i in 0 until list.size - 1) {
-            if (list[i].name == addToFavorites) {
-                list[i].isFavorite = true
-            }
-        }
+        viewModel = AOEItemMockData()
 
         initRecyclerView()
 
@@ -44,7 +37,7 @@ class ListActivity : AppCompatActivity() {
     fun initRecyclerView() {
         listActvity_rv.apply {
             layoutManager = LinearLayoutManager(this@ListActivity, LinearLayoutManager.VERTICAL, false)
-            itemAdapter = ItemRecyclerView(list)
+            itemAdapter = ItemRecyclerView(viewModel!!.addToList(), this@ListActivity)
             adapter = itemAdapter
         }
     }

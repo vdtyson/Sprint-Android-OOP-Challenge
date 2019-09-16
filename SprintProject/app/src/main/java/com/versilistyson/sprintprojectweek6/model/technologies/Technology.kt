@@ -1,12 +1,15 @@
 package com.versilistyson.sprintprojectweek6.model.technologies
 
+import android.os.Parcelable
 import com.versilistyson.sprintprojectweek6.model.common.Item
+import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 
-data class Technology(
-    override val name: String,
-    override val shortDescription: String,
-    override val longDescription: String
-) : Item {
-    override var isFavorite: Boolean = false
-    override val classType: Item.ItemType = Item.ItemType.Technology
+class Technology(
+     name: String,
+    shortDescription: String,
+     longDescription: String,
+     isFavorite: Boolean = false
+) : Serializable, Item(name = name,shortDescription =shortDescription,longDescription = longDescription,isFavorite =  isFavorite) {
+
 }
